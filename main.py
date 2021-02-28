@@ -1,15 +1,11 @@
 # Python version: 3.6
-
-
 import sys
 import random
 from tkinter import Tk, Canvas, Frame, Button, BOTH, TOP, RIGHT
 
-
 MARGIN = 20
 SIDE = 50
 WIDTH = HEIGHT = MARGIN * 2 + SIDE * 9
-
 
 class KakuroUI(Frame):
     """
@@ -341,3 +337,6 @@ if __name__ == '__main__':
         ui = KakuroUI(root, game)
         root.geometry("%dx%d" % (WIDTH, HEIGHT + 40))
         root.mainloop()
+        
+        
+        
