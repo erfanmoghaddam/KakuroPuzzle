@@ -3,5 +3,5 @@ Kakuro is a kind of logic puzzle that is often referred to as a mathematical tra
 
 
 # Requirements
-Python 2.7 or 3
+Python 2.7 or 3<br>
 Tkinter
