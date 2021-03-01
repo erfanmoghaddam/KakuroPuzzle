@@ -1,4 +1,5 @@
-# Python version: 3.6
+# Python version: 3.8
+
 import sys
 import random
 from tkinter import Tk, Canvas, Frame, Button, BOTH, TOP, RIGHT
@@ -148,7 +149,6 @@ class KakuroUI(Frame):
             return True
 
     def key_pressed(self, event):
-        self.canvas.delete("victory")
         self.canvas.delete("circ")
         if self.game.game_over:
             return
@@ -171,8 +171,7 @@ class KakuroUI(Frame):
             self.create_circs(circlists)
             self.draw_puzzle()
             self.draw_cursor()
-            if self.game.check_win():
-                self.draw_victory()
+
 
     def Upkey_pressed(self, event):
         if self.game.game_over:
@@ -273,42 +272,6 @@ class KakuroRandomGame(object):
         file.close()
         self.game_over = False
 
-    def check_win(self):
-        if(len(self.data_filled) == len(self.data_fills)):
-            for item in self.data_filled:
-                if [item[0], item[1]-1] not in self.data_fills:
-                    sumexp = -1
-                    for elem in self.data_totals:
-                        if elem[2] == item[0] and elem[3] == item[1]-1 and elem[1] == 'h':
-                            sumexp = elem[0]
-                    offset = 0
-                    sumact = []
-                    while [item[0], item[1]+offset] in self.data_fills:
-                        sumact = sumact + [e[2] for e in self.data_filled if e[0] == item[0] and e[1] == item[1]+offset]
-                        offset = offset + 1
-                    if len(sumact) != len(set(sumact)):
-                        return False
-                    if sumexp != -1 and sumexp != sum(sumact):
-                        return False
-            for item in self.data_filled:
-                if [item[0]-1, item[1]] not in self.data_fills:
-                    sumexp = -1
-                    for elem in self.data_totals:
-                        if elem[2] == item[0]-1 and elem[3] == item[1] and elem[1] == 'v':
-                            sumexp = elem[0]
-                    offset = 0
-                    sumact = []
-                    while [item[0]+offset, item[1]] in self.data_fills:
-                        sumact = sumact + [e[2] for e in self.data_filled if e[0] == item[0]+offset and e[1] == item[1]]
-                        offset = offset + 1
-                    if len(sumact) != len(set(sumact)):
-                        return False
-                    if sumexp != -1 and sumexp != sum(sumact):
-                        return False
-            return True
-        else:
-            return False
-
 
 
 
@@ -337,6 +300,8 @@ if __name__ == '__main__':
         ui = KakuroUI(root, game)
         root.geometry("%dx%d" % (WIDTH, HEIGHT + 40))
         root.mainloop()
+        
+        
         
         
         
