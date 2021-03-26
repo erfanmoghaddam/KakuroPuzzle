@@ -1,7 +1,7 @@
 # KakuroPuzzle
-Kakuro is a kind of logic puzzle that is often referred to as a mathematical transliteration of the crossword, and we have tried to recreate this classic japanese puzzle in python using 'tkinter'. 
+Kakuro is a logic puzzle that is often referred to as a mathematical transliteration of the crossword, and we have tried to recreate this classic japanese puzzle in python using 'tkinter'. 
 
 
 # Requirements
-Python 2.7 or 3<br>
+Python 3.8<br>
 Tkinter
