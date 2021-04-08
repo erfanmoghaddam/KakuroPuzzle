@@ -13,14 +13,12 @@ if __name__ == '__main__':
         print ("Wrong number of arguments! Enter mode (custom or random) to run in as argument.\n"
                "Example Usage: python kakuro.py random to run random puzzles\n"
                "Going forward with random...\n")
-        if main_account_screen() == False:
-            print("hhh")
-        else:
-            game = KakuroRandomGame()
-            root = Tk()
-            ui = KakuroUI(root, game)
-            root.geometry("%dx%d" % (WIDTH, HEIGHT + 40))
-            root.mainloop()
+        main_account_screen()
+        game = KakuroRandomGame()
+        root = Tk()
+        ui = KakuroUI(root, game)
+        root.geometry("%dx%d" % (WIDTH, HEIGHT + 40))
+        root.mainloop()
     elif sys.argv[1]=='random':
         main_account_screen()
         game = KakuroRandomGame()
