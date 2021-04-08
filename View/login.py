@@ -168,8 +168,9 @@ def main_account_screen():
     Button(text="Login", height="2", width="30", command = login).pack()
     Label(text="").pack()
     Button(text="Register", height="2", width="30", command=register).pack()
-    Button(text="Close", height="2", width="30", command=close_all).pack()
-    #to disable the exit button in toolbar
+#     close button
+#     Button(text="Close", height="2", width="30", command=close_all).pack()
+#     to disable the exit button in toolbar
     main_screen.protocol("WM_DELETE_WINDOW", disable_exit_toolbar)
     main_screen.mainloop()
 
