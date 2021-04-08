@@ -4,4 +4,6 @@ Kakuro is a logic puzzle that is often referred to as a mathematical translitera
 
 # Requirements
 Python 2.7<br>
-Tkinter
+Tkinter GUI toolkit
+Pulp modeler - https://pypi.org/project/PuLP/
+GLPK module  
