@@ -1,6 +1,9 @@
 # KakuroPuzzle
-Kakuro is a logic puzzle that is often referred to as a mathematical transliteration of the crossword, and we have tried to recreate this classic japanese puzzle in python using 'tkinter', you can also register/login as a player!
+Kakuro is a logic puzzle that is often referred to as a mathematical transliteration of the crossword, and we have tried to recreate this classic Japanese puzzle in Python using Tkinter, Pulp and GLPK.<br>
 
+As a player in our game, you can register a new account with your username and password and log in to it. Once the player has successfully logged in, a 9x9 random or custom (based on your input when you start the app) puzzle will be displayed. The player has the chance to enter their answers on the grid, clear answers, try new puzzles and see answers using the built-in solver.<br>
+
+Kakuro is played on a rectangular grid of cells. The aim is to place numbers from 1 to 9 in clocks of empty cells running horizontally and vertically inside the grid. The sum of each block should match the target number, which appears inside darkened cells, divided into two by diagonal lines, at the top (for vertical problems) or to the left (for horizontal ones) of each empty block. No number may be used more than once in each block, or the game will display error.
 
 # Requirements
 Python 2.7<br>
