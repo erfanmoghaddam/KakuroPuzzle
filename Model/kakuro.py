@@ -3,7 +3,7 @@ import random
 
 class KakuroRandomGame(object):
     """
-    A Kakuro game. Stores gamestate and completes the puzzle as needs be
+    Random Kakuro game: Starts a random kakuro game, based on puzzles that have already been stored inside savedpuzzles.txt.
     """
     def __init__(self):
         self.played_so_far = []
@@ -54,4 +54,36 @@ class KakuroRandomGame(object):
                 else:
                     self.data_totals = self.data_totals + [[int(line[:-3]), line[-3], int(line[-2]), int(line[-1])]]
         file.close()
+        self.game_over = False
+
+
+
+class KakuroCustomGame(object):
+    """
+    Custom Kakuro game: Starts a custom kakuro game, based on the players input.
+    """
+    def __init__(self):
+        self.played_so_far = []
+        self.data_filled = []
+        self.data_fills = []
+        self.data_totals = []
+        print 'Enter 9 lines of puzzle.'
+        try:
+            for i in xrange(9):
+                text = raw_input()
+                proced = [ele.split('\\') for ele in text.split(',')]
+                if len(proced)!=9:
+                    raise KakuroError('Nine cells a line or else format not followed!\n')
+                for j in xrange(9):
+                    if len(proced[j]) == 1 and proced[j][0] == ' ':
+                        self.data_fills = self.data_fills + [[i,j]]
+                    elif len(proced[j]) == 2:
+                        if proced[j][0]!=' ':
+                            self.data_totals = self.data_totals + [[int(proced[j][0]),'v',i,j]]
+                        if proced[j][1]!=' ':
+                            self.data_totals = self.data_totals + [[int(proced[j][1]),'h',i,j]]
+        except(ValueError):
+            raise KakuroError('Format not followed! Integers only. Check readme.txt for puzzle sample.')
+        print '\nStarting custom game. Click on the grid to begin.'
+        self.gameId = 0
         self.game_over = False
