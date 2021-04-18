@@ -9,23 +9,21 @@ Pulp modeler - https://pypi.org/project/PuLP/<br>
 GLPK module - https://en.wikibooks.org/wiki/GLPK/Python  <br>
 
 
-#Note
-Kakuro Custom Mode:
-
-- Every row of the puzzle is to be entered in a new line. Thus, there should be nine lines terminated by newlines.
-- For a row, each cell entry must be delimited by commas. Thus there should be nine cells (and eight commas) a line.
-- A blank cell for user input is to be represented by a space character. A darkened cell (with a diagonal partition)
-  is to be represented by x\y where x denotes the entry in the lower-left triangular subcell and y denotes the entry
-  in the upper-right triangular subcell. x and y can be integers or space character.
-
-sample:
- \ ,16\ ,23\ , \ ,34\ ,16\ ,17\ ,15\ , \ 
- \15, , , \30, , , , , \ 
- \16, , ,17\22, , , , ,4\ 
- \ , \24, , , ,35\ , \8, , 
- \ ,17\ ,30\23, , , ,16\4, , 
- \17, , , \24, , , ,24\ , \ 
- \16, , ,17\ ,16\23, , , ,17\ 
- \ , \29, , , , , \16, , 
- \ , \30, , , , , \17, ,
+# Note
+Kakuro Custom Mode:<br><br>
+- Every row of the puzzle is to be entered in a new line. Thus, there should be nine lines terminated by newlines.<br>
+- For a row, each cell entry must be delimited by commas. Thus there should be nine cells (and eight commas) a line.<br>
+- A blank cell for user input is to be represented by a space character. A darkened cell (with a diagonal partition)<br>
+  is to be represented by x\y where x denotes the entry in the lower-left triangular subcell and y denotes the entry<br>
+  in the upper-right triangular subcell. x and y can be integers or space character.<br>
+sample:<br>
+ \ ,16\ ,23\ , \ ,34\ ,16\ ,17\ ,15\ , \ <br>
+ \15, , , \30, , , , , \ <br>
+ \16, , ,17\22, , , , ,4\ <br>
+ \ , \24, , , ,35\ , \8, , <br>
+ \ ,17\ ,30\23, , , ,16\4, , <br>
+ \17, , , \24, , , ,24\ , \ <br>
+ \16, , ,17\ ,16\23, , , ,17\ <br>
+ \ , \29, , , , , \16, , <br>
+ \ , \30, , , , , \17, ,<br>
 
