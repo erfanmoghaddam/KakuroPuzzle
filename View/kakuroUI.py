@@ -13,7 +13,7 @@ WIDTH = HEIGHT = MARGIN * 2 + SIDE * 9
 
 class KakuroUI(Frame):
     """
-    The Tkinter UI: draw the board and accept input
+    Kakuro UI: draws the board and accepts inputs
     """
     def __init__(self, parent, game):
         self.game = game
@@ -157,7 +157,6 @@ class KakuroUI(Frame):
             return True
 
     def key_pressed(self, event):
-        self.canvas.delete("victory")
         self.canvas.delete("circ")
         if self.game.game_over:
             return
@@ -182,7 +181,6 @@ class KakuroUI(Frame):
             self.draw_cursor()
 
     def Upkey_pressed(self, event):
-        self.canvas.delete("victory")
         if self.game.game_over:
             return
         if self.row > 0 and self.col >= 0:
@@ -190,7 +188,6 @@ class KakuroUI(Frame):
             self.draw_cursor()
 
     def Downkey_pressed(self, event):
-        self.canvas.delete("victory")
         if self.game.game_over:
             return
         if self.row >= 0 and self.col >= 0 and self.row < 8:
@@ -198,7 +195,6 @@ class KakuroUI(Frame):
             self.draw_cursor()
 
     def Rightkey_pressed(self, event):
-        self.canvas.delete("victory")
         if self.game.game_over:
             return
         if self.row >= 0 and self.col >= 0 and self.col <8:
@@ -206,7 +202,6 @@ class KakuroUI(Frame):
             self.draw_cursor()
 
     def Leftkey_pressed(self, event):
-        self.canvas.delete("victory")
         if self.game.game_over:
             return
         if self.row >= 0 and self.col > 0:
@@ -214,7 +209,6 @@ class KakuroUI(Frame):
             self.draw_cursor()
 
     def Bkspkey_pressed(self, event):
-        self.canvas.delete("victory")
         self.canvas.delete("circ")
         if self.game.game_over:
             return
@@ -225,16 +219,14 @@ class KakuroUI(Frame):
 
     def clear_answers(self):
         self.game.data_filled = []
-        self.canvas.delete("victory")
         self.canvas.delete("circ")
         self.draw_puzzle()
 
     def solve(self):
         self.game.data_filled = []
-        self.canvas.delete("victory")
         self.canvas.delete("circ")
+        # zero down the indices
         options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        # Remember to zero down the indices
         vals = options
         rows = options
         cols = options
@@ -242,7 +234,7 @@ class KakuroUI(Frame):
         choices = LpVariable.dicts("Choice", (vals, rows, cols), 0, 1, LpInteger)
         # The complete set of boolean choices
         prob += 0, "Arbitrary Objective Function"
-        # Force singular values. Even for extraneous ones
+        # Forcing singular values. 
         for r in rows:
             for c in cols:
                 prob += lpSum([choices[v][r][c] for v in vals]) == 1, ""
@@ -316,13 +308,13 @@ class KakuroUI(Frame):
                     zonerowssumholder = 0
                     zonerowsholder = []
 
-        # Force all extraneous values to 1 (arbitrary) | Possibly many times
+        # Force all extraneous values to 1 (arbitrary) , Possibly many times
         for ite in self.game.data_totals:
             prob += choices["1"][str(ite[2]+1)][str(ite[3]+1)] == 1, ""
 
         # Suppress calculation messages
         GLPK(msg=0).solve(prob)
-        # Solution: The commented print statements are for debugging aid.
+        # The commented print statements are for debugging aid.
         for v in prob.variables():
             # print v.name, "=", v.varValue
             if v.varValue == 1 and [int(v.name[9])-1, int(v.name[11])-1] in self.game.data_fills:
@@ -379,7 +371,6 @@ class KakuroUI(Frame):
                     self.game.data_totals = self.game.data_totals + [[int(line[:-3]), line[-3], int(line[-2]), int(line[-1])]]
         file.close()
         self.game.game_over = False
-        self.canvas.delete("victory")
         self.canvas.delete("circ")
         self.canvas.delete("grays")
         self.canvas.delete("grayliners")
